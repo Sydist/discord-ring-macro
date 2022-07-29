@@ -9,11 +9,6 @@ let userIDs = [""];
 // Cooldown between ringing and canceling in milliseconds
 let cooldown = 50;
 
-export const setCooldown = (x: number) => cooldown = x;
-export const setUserIDs = (x: string[]) => userIDs = x;
-export const setDmID = (x: string) => dmID = x;
-
-
 const LINK = new URL(`https://discord.com/api/v9/channels/${dmID}/call/ring`);
 const CANCEL_LINK = new URL(`https://discord.com/api/v9/channels/${dmID}/call/stop-ringing`);
 
@@ -28,9 +23,16 @@ const REQUEST: RequestInit = {
     }), 
 };
 
-while (true) {
-    await fetch(LINK, REQUEST);
-    await new Promise(resolve => setTimeout(resolve, cooldown));
-    await fetch(CANCEL_LINK, REQUEST);
-    await new Promise(resolve => setTimeout(resolve, cooldown));
+export const setCooldown = (x: number) => cooldown = x;
+export const setUserIDs = (x: string[]) => userIDs = x;
+export const setDmID = (x: string) => dmID = x;
+export const run = async () => {
+    while (true) {
+        await fetch(LINK, REQUEST);
+        await new Promise(resolve => setTimeout(resolve, cooldown));
+        await fetch(CANCEL_LINK, REQUEST);
+        await new Promise(resolve => setTimeout(resolve, cooldown));
+    }
 }
+
+run();
