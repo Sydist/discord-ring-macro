@@ -7,7 +7,7 @@ let dmID = "";
 let userIDs = [""];
 
 // Cooldown between ringing and canceling in milliseconds
-let cooldown = 50;
+let cooldown = 100;
 
 const LINK = new URL(`https://discord.com/api/v9/channels/${dmID}/call/ring`);
 const CANCEL_LINK = new URL(`https://discord.com/api/v9/channels/${dmID}/call/stop-ringing`);
