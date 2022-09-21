@@ -1,4 +1,4 @@
-import "https://deno.land/x/dotenv@v3.2.0/load.ts";
+import "https://deno.land/std@0.152.0/dotenv/load.ts";
 
 // ID of the channel to call in
 let dmID = "";
