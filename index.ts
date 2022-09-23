@@ -1,10 +1,10 @@
 import "https://deno.land/std@0.152.0/dotenv/load.ts";
 
 // ID of the channel to call in
-let dmID = "";
+let dmID = Deno.env.get("DM_ID");
 
 // List of user IDs you want to ring
-let userIDs = [""];
+let userIDs = Deno.env.get("USER_IDS")?.trim().split(" ");
 
 // Cooldown between ringing and canceling in milliseconds
 let cooldown = 100;
