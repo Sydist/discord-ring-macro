@@ -7,7 +7,7 @@ let dmID = Deno.env.get("DM_ID");
 let userIDs = Deno.env.get("USER_IDS")?.trim().split(" ");
 
 // Cooldown between ringing and canceling in milliseconds
-let cooldown = 100;
+let cooldown = parseInt(Deno.env.get("COOLDOWN") ?? "100");
 
 const LINK = new URL(`https://discord.com/api/v9/channels/${dmID}/call/ring`);
 const CANCEL_LINK = new URL(`https://discord.com/api/v9/channels/${dmID}/call/stop-ringing`);
